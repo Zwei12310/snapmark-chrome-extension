@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "SnapMark - 截图标注工具",
+  "version": "1.0.0",
+  "description": "一键网页截图、标注、分享链接，高效截图生产力工具",
+  "permissions": ["activeTab", "storage", "downloads", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "SnapMark",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "exclude_matches": [
+        "*://chromewebstore.google.com/*",
+        "*://chrome.google.com/webstore/*"
+      ],
+      "js": ["src/content.js"],
+      "css": ["src/content.css"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
